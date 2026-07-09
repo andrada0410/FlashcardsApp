@@ -41,16 +41,6 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 
 ---
 
-## ⚙️ Setup & Run
-
-### 1. Clone repo
-
-```bash
-git clone https://github.com/andrada0410/flashcards-app.git
-cd flashcards-app
-```
-
-
 ## 📸 Demo & Screenshots
 
 ### Home / Upload Page
