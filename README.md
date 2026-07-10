@@ -2,7 +2,7 @@
 
 Generate smart flashcards from PDF files using AI.
 
-Upload a document and instantly get study-ready flashcards — perfect for exams, summaries, and fast learning.
+Upload a document and instantly get study-ready flashcards — perfect for exams, summaries and fast learning.
 
 ---
 
