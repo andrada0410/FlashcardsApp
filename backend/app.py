@@ -1,10 +1,15 @@
 from time import time
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import pdfplumber
 from ai_service import generate_flashcards
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder='../frontend/templates',
+    static_folder='../frontend/static'
+)
+
 CORS(app)
 
 # cooldown per IP
@@ -12,7 +17,11 @@ last_request = {}
 
 @app.route("/")
 def home():
-    return "Server running"
+    return render_template("index.html")
+
+@app.route("/flashcardsPage.html")
+def flashcards_page():
+    return render_template("flashcardsPage.html")
 
 @app.route("/upload", methods=["POST"])
 def upload_pdf():

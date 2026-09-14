@@ -29,7 +29,7 @@ def generate_flashcards(text):
       {{"question": "string", "answer": "string"}}
     ]
 
-    Create 15 flashcards from the text below.
+    Create at least 15 flashcards from the text below.
 
     Keep questions simple and clear.
     Keep answers short and precise.

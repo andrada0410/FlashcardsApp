@@ -1,38 +1,6 @@
-:root {
-  --bg: #f4f8ff;
-  --card: #ffffff;
-  --text: #1e2a3a;
-  --muted: #5b6b7a;
-  --primary: #3b82f6;
-  --shadow: rgba(20, 40, 80, 0.12);
-}
-
-body.dark {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --primary: #60a5fa;
-  --shadow: rgba(0, 0, 0, 0.4);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--bg);
-}
+@import url('./styles.css');
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: var(--text);
-  background: var(--bg);
-
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -81,18 +49,9 @@ body {
   transform: rotateY(180deg);
   background: linear-gradient(
     to bottom,
-    #f0f7ff 0%,
-    #e0e7ff 50%,
-    rgba(59, 130, 246, 0.25) 100%
-  );
-}
-
-body.dark .back {
-  background: linear-gradient(
-    to bottom,
-    #1e293b 0%,
-    rgba(59, 130, 246, 0.1) 50%,
-    rgba(37, 99, 235, 0.4) 100%
+    var(--card-back-grad-start) 0%,
+    var(--card-back-grad-mid) 50%,
+    var(--card-back-grad-end) 100%
   );
 }
 
@@ -113,23 +72,10 @@ body.dark .back {
 }
 
 .controls button:hover {
+  background: var(--primary-dark);
   transform: translateY(-1px);
 }
 
 .controls span {
   color: var(--muted);
-}
-
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: var(--card);
-  box-shadow: 0 5px 15px var(--shadow);
-  cursor: pointer;
-  font-size: 18px;
 }

@@ -9,7 +9,7 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 ## 🚀 Features
 
 - 📄 Upload PDF files
-- 🤖 AI-generated flashcards (15 per document)
+- 🤖 AI-generated flashcards
 - 🌍 Automatic language detection (Romanian, English, etc.)
 - 🎴 Interactive flashcards with flip animation
 - 🌙 Dark / Light mode toggle
@@ -38,6 +38,63 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 - pdfplumber
 - Google Generative AI (Gemini)
 - langdetect
+
+---
+
+## ⚙️ Setup & Local Development
+
+### Prerequisites
+- Python 3.x
+- An API Key for Google Gemini (set in a `.env` file)
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/andrada0410/FlashcardsApp.git
+cd FlashcardsApp
+```
+
+### 2. Set Up Environment Variables
+Create a `.env` file inside the `backend/` directory and add your API Key:
+
+```env
+GEMINI_API_KEY=your_api_key
+```
+
+### 3. Install Dependencies & Start Backend
+Navigate to the backend/ directory, set up a virtual environment, install dependencies, and run the server:
+
+```bash
+cd backend
+```
+
+Create virtual environment
+```bash
+python -m venv .venv
+```
+
+ Activate virtual environment
+
+
+On Windows:
+```bash
+.venv\Scripts\activate
+```
+On macOS/Linux:
+```bash
+source .venv/bin/activate
+```
+
+ Install required packages
+```bash
+pip install -r requirements.txt
+```
+
+ Run the app
+```bash
+python app.py
+```
+### 4. Access the Application
+Open your browser and navigate to: http://127.0.0.1:5000
 
 ---
 

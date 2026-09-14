@@ -6,6 +6,10 @@
   --primary: #3b82f6;
   --primary-dark: #2563eb;
   --shadow: rgba(20, 40, 80, 0.12);
+
+  --card-back-grad-start: #f0f7ff;
+  --card-back-grad-mid: #e0e7ff;
+  --card-back-grad-end: rgba(59, 130, 246, 0.25);
 }
 
 body.dark {
@@ -16,6 +20,14 @@ body.dark {
   --primary: #60a5fa;
   --primary-dark: #3b82f6;
   --shadow: rgba(0, 0, 0, 0.4);
+
+  --card-back-grad-start: #1e293b;
+  --card-back-grad-mid: rgba(59, 130, 246, 0.1);
+  --card-back-grad-end: rgba(37, 99, 235, 0.4);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -28,61 +40,8 @@ body {
   font-family: Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
-
   display: flex;
   flex-direction: column;
-}
-
-.main {
-  flex: 1;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-}
-
-h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-p {
-  color: var(--muted);
-  margin-bottom: 30px;
-}
-
-.upload-box {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px var(--shadow);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-}
-
-input[type="file"] {
-  color: var(--muted);
-}
-
-button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: 0.2s;
-}
-
-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
 }
 
 .theme-toggle {
@@ -97,4 +56,9 @@ button:hover {
   box-shadow: 0 5px 15px var(--shadow);
   cursor: pointer;
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
 }
