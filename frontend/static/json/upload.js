@@ -3,7 +3,7 @@ let isUploading = false;
 async function uploadPDF() {
   if (isUploading) return;
 
-  const fileInput = document.getElementById("file");
+  const fileInput = document.getElementById("fileInput");
   const button = document.querySelector(".upload-box button");
 
   if (!fileInput.files.length) {
@@ -28,6 +28,7 @@ async function uploadPDF() {
 
     if (!res.ok) {
       alert(data.error || "Something went wrong");
+      return;
     }
 
     localStorage.setItem("flashcards", JSON.stringify(data));

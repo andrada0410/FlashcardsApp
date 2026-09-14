@@ -1,6 +1,6 @@
 # 📚 Flashcards AI
 
-Generate smart flashcards from PDF files using AI.
+Generate smart flashcards from PDF/DOCX files using AI.
 
 Upload a document and instantly get study-ready flashcards — perfect for exams, summaries and fast learning.
 
@@ -8,7 +8,7 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 
 ## 🚀 Features
 
-- 📄 Upload PDF files
+- 📄 Upload PDF/DOCX files
 - 🤖 AI-generated flashcards
 - 🌍 Automatic language detection (Romanian, English, etc.)
 - 🎴 Interactive flashcards with flip animation
@@ -19,7 +19,7 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 
 ## 🧠 How it works
 
-1. User uploads a PDF
+1. User uploads a PDF/DOCX
 2. Backend extracts text using `pdfplumber`
 3. AI generates flashcards using Google Gemini
 4. Frontend displays them in an interactive UI

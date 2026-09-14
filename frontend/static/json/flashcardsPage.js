@@ -23,12 +23,12 @@ function renderCard() {
         <div class="inner">
           <div class="front">
             <h2>Question</h2>
-            <p>${card.question}</p>
+            <p id="card-question"></p>
           </div>
 
           <div class="back">
             <h2>Answer</h2>
-            <p>${card.answer}</p>
+            <p id="card-answer"></p>
           </div>
         </div>
       </div>
@@ -41,6 +41,8 @@ function renderCard() {
 
     </div>
   `;
+  document.getElementById("card-question").textContent = card.question;
+  document.getElementById("card-answer").textContent = card.answer;
 }
 
 function nextCard() {

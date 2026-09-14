@@ -1,9 +1,9 @@
 import os
 import json
 import re
-
 from dotenv import load_dotenv
 from google import genai
+from google.genai import types
 from langdetect import detect
 
 load_dotenv()
@@ -11,7 +11,7 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def generate_flashcards(text):
-    # detect language from PDF
+    # detect language
     try:
         lang = detect(text)
     except:
@@ -19,15 +19,6 @@ def generate_flashcards(text):
 
     prompt = f"""
     You are a strict flashcard generator.
-
-    Return ONLY valid JSON.
-    Do NOT include markdown.
-    Do NOT include extra text.
-
-    Format:
-    [
-      {{"question": "string", "answer": "string"}}
-    ]
 
     Create at least 15 flashcards from the text below.
 
@@ -45,6 +36,9 @@ def generate_flashcards(text):
             # model="gemini-flash-latest",
             model="gemini-2.5-flash",
             contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+            )
         )
 
         content = response.text.strip()
@@ -52,29 +46,7 @@ def generate_flashcards(text):
         # remove markdown if exists
         content = re.sub(r"```json|```", "", content).strip()
 
-        # try direct JSON parse
-        try:
-            return json.loads(content)
-        except:
-            pass
-
-        # fallback: extract JSON array only
-        start = content.find("[")
-        end = content.rfind("]")
-
-        if start != -1 and end != -1:
-            try:
-                return json.loads(content[start:end + 1])
-            except:
-                pass
-
-        # final fallback
-        return [
-            {
-                "question": "Parsing error",
-                "answer": content
-            }
-        ]
+        return json.loads(content)
 
     except Exception as e:
         print("AI ERROR:", e)
