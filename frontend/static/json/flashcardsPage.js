@@ -145,3 +145,38 @@ window.addEventListener("keydown", (event) => {
       break;
   }
 });
+
+async function downloadPDF() {
+  if (!cards || cards.length === 0)
+    return;
+
+  const uploadedFileName = localStorage.getItem("fileName") || "export";
+  const cleanName = uploadedFileName.replace(/\.[^/.]+$/, "");
+
+  try {
+    const response = await fetch('/export-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        cards: cards,
+        filename: cleanName
+      })
+    });
+
+    if (response.ok) {
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `flashcards_${cleanName}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } else {
+      alert("A apărut o eroare la generarea PDF-ului.");
+    }
+  } catch (error) {
+    console.error("Eroare la descărcarea PDF-ului:", error);
+  }
+}

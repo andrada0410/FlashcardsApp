@@ -1,8 +1,10 @@
+import os
 from time import time
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_file
 from flask_cors import CORS
-import pdfplumber, docx
 from ai_service import generate_flashcards
+from services.text_extraction_service import extract_text_from_pdf, extract_text_from_docx
+from services.pdf_service import generate_pdf
 
 app = Flask(
     __name__,
@@ -12,25 +14,7 @@ app = Flask(
 
 CORS(app)
 
-# cooldown per IP
 last_request = {}
-
-def extract_text_from_pdf(file_stream):
-    text = ""
-    with pdfplumber.open(file_stream) as pdf:
-        for page in pdf.pages[:5]:
-            page_text = page.extract_text()
-            if page_text:
-                text += page_text + "\n"
-    return text
-
-def extract_text_from_docx(file_stream):
-    doc = docx.Document(file_stream)
-    full_text = []
-    for para in doc.paragraphs:
-        if para.text.strip():
-            full_text.append(para.text)
-    return "\n".join(full_text)
 
 @app.route("/")
 def home():
@@ -45,7 +29,6 @@ def upload_file():
     ip = request.remote_addr
     now = time()
 
-    # cooldown 12 sec
     if ip in last_request and now - last_request[ip] < 12:
         return jsonify({"error": "Too many requests. Wait a few seconds."}), 429
 
@@ -66,12 +49,23 @@ def upload_file():
         return jsonify({"error": "Could not extract text from the file."}), 400
 
     last_request[ip] = now
-
     card_count = request.form.get("cardCount", 15)
 
     flashcards = generate_flashcards(text, card_count)
-
     return jsonify(flashcards)
+
+@app.route('/export-pdf', methods=['POST'])
+def export_pdf():
+    data = request.get_json()
+    cards = data.get('cards', [])
+    filename = data.get('filename', 'flashcards')
+
+    if not cards:
+        return jsonify({'error': 'Nu există carduri'}), 400
+
+    buffer, output_filename = generate_pdf(cards, filename)
+
+    return send_file( buffer, as_attachment=True, download_name=output_filename, mimetype='application/pdf')
 
 if __name__ == "__main__":
     app.run(debug=True)
