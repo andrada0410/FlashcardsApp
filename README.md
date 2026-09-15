@@ -109,4 +109,4 @@ Here you can upload your PDF and start the generation process:
 ![Upload Page](./frontend/app/img4.png)
 ![Upload Page](./frontend/app/img5.png)
 ![Upload Page](./frontend/app/img6.png)
-
+![Upload Page](./frontend/app/img7.png)
