@@ -16,7 +16,15 @@
 
   <div class="upload-box">
     <input type="file" id="fileInput" accept=".pdf, .docx">
-    <button onclick="uploadPDF()">Generate</button>
+    <button onclick="upload_file()">Generate</button>
+    <div class="upload-options">
+      <label for="cardCount">Number of flashcards:</label>
+      <select id="cardCount" name="cardCount">
+        <option value="15" selected>15</option>
+        <option value="20">20</option>
+        <option value="25" >25</option>
+      </select>
+</div>
   </div>
 
 </div>

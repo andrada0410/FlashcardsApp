@@ -18,30 +18,29 @@ function renderCard() {
 
   container.innerHTML = `
     <div class="study-wrapper">
-      <div class="card" onclick="toggleFlip()">
+
+      <div class="card">
         <div class="inner">
           <div class="front">
             <h2>Question</h2>
-            <p id="card-question"></p>
+            <p>${card.question}</p>
           </div>
 
           <div class="back">
             <h2>Answer</h2>
-            <p id="card-answer"></p>
+            <p>${card.answer}</p>
           </div>
         </div>
       </div>
 
       <div class="controls">
-        <button onclick="prevCard()" ${index === 0 ? "disabled" : ""}>Prev</button>
+        <button onclick="prevCard()">Previous</button>
         <span>${index + 1} / ${cards.length}</span>
-        <button onclick="nextCard()" ${index === cards.length - 1 ? "disabled" : ""}>Next</button>
+        <button onclick="nextCard()">Next</button>
       </div>
 
     </div>
   `;
-  document.getElementById("card-question").textContent = card.question;
-  document.getElementById("card-answer").textContent = card.answer;
 }
 
 function nextCard() {
@@ -56,19 +55,6 @@ function prevCard() {
     index--;
     renderCard();
   }
-}
-
-function shuffleCards() {
-  if (cards.length <= 1) 
-    return;
-
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
-  }
-
-  index = 0;
-  renderCard();
 }
 
 function toggleTheme() {
@@ -94,40 +80,5 @@ window.addEventListener("load", () => {
 
     const btn = document.querySelector(".theme-toggle");
     if (btn) btn.innerHTML = "☀️";
-  }
-});
-
-function toggleFlip(){
-  const cardElement = document.querySelector(".card");
-  if (cardElement){
-    cardElement.classList.toggle("flipped");
-  }
-}
-
-window.addEventListener("keydown", (event) => {
-  switch (event.key) {
-    case "ArrowRight":
-    case " ":
-      event.preventDefault();
-      nextCard();
-      break;
-
-    case "ArrowLeft":
-      event.preventDefault();
-      prevCard();
-      break;
-
-    case "ArrowUp":
-    case "ArrowDown":
-    case "Enter":
-      event.preventDefault();
-      toggleFlip();
-      break;
-
-    case "s":
-    case "S":
-      event.preventDefault();
-      shuffleCards();
-      break;
   }
 });

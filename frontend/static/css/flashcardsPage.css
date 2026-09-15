@@ -1,8 +1,49 @@
 @import url('./styles.css');
 
 body {
+  display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+.actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.actions .theme-toggle {
+  position: static;
+}
+
+.btn-actions {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: all 0.2s ease;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-actions:hover {
+  transform: translateY(-1px);
+  color: var(--primary);
 }
 
 .study-wrapper {
@@ -17,6 +58,8 @@ body {
   width: 360px;
   height: 230px;
   perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .inner {
@@ -27,7 +70,7 @@ body {
   position: relative;
 }
 
-.card:hover .inner {
+.card.flipped .inner {
   transform: rotateY(180deg);
 }
 
@@ -43,6 +86,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
 }
 
 .back {
@@ -65,17 +110,27 @@ body {
   background: var(--primary);
   border: none;
   color: white;
-  padding: 10px 14px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
-.controls button:hover {
+.controls button:hover:not(:disabled) {
   background: var(--primary-dark);
   transform: translateY(-1px);
 }
 
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .controls span {
   color: var(--muted);
+  font-weight: 500;
 }

@@ -22,30 +22,111 @@ p {
 
 .upload-box {
   background: var(--card);
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px var(--shadow);
+  padding: 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px var(--shadow);
   display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 440px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="file"] {
-  color: var(--muted);
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 10px;
+  background: var(--bg);
+  border: 1px dashed var(--muted);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
-button {
+input[type="file"]:hover {
+  border-color: var(--primary);
+}
+
+input[type="file"]:disabled,
+select:disabled,
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+input[type="file"]::file-selector-button {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 10px;
-  transition: 0.2s;
+  margin-right: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease;
 }
 
-button:hover {
+input[type="file"]::file-selector-button:hover {
   background: var(--primary-dark);
-  transform: translateY(-1px);
+}
+
+.upload-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.upload-options label {
+  font-weight: 500;
+}
+
+select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+select:focus, select:hover {
+  border-color: var(--primary);
+}
+
+.upload-box > button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.upload-box > button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.upload-box > button:active {
+  transform: translateY(0);
 }

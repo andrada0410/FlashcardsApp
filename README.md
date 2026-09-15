@@ -13,14 +13,13 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 - 🌍 Automatic language detection (Romanian, English, etc.)
 - 🎴 Interactive flashcards with flip animation
 - 🌙 Dark / Light mode toggle
-- ⚡ Fast processing (first 5 pages for speed)
 
 ---
 
 ## 🧠 How it works
 
 1. User uploads a PDF/DOCX
-2. Backend extracts text using `pdfplumber`
+2. Backend extracts text using `pdfplumber` or `docx`
 3. AI generates flashcards using Google Gemini
 4. Frontend displays them in an interactive UI
 
@@ -30,12 +29,13 @@ Upload a document and instantly get study-ready flashcards — perfect for exams
 
 ### Frontend
 - HTML
-- CSS (custom UI + dark mode)
+- CSS
 - JavaScript (vanilla)
 
 ### Backend
 - Python (Flask)
 - pdfplumber
+- docx
 - Google Generative AI (Gemini)
 - langdetect
 
@@ -103,10 +103,10 @@ Open your browser and navigate to: http://127.0.0.1:5000
 ### Home / Upload Page
 Here you can upload your PDF and start the generation process:
 
-![Upload Page](./frontend/app/img.png)
-![Upload Page](./frontend/app/img_1.png)
-![Upload Page](./frontend/app/img_2.png)
-![Upload Page](./frontend/app/img_3.png)
-![Upload Page](./frontend/app/img_4.png)
-![Upload Page](./frontend/app/img_5.png)
+![Upload Page](./frontend/app/img1.png)
+![Upload Page](./frontend/app/img2.png)
+![Upload Page](./frontend/app/img3.png)
+![Upload Page](./frontend/app/img4.png)
+![Upload Page](./frontend/app/img5.png)
+![Upload Page](./frontend/app/img6.png)
 

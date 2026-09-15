@@ -41,7 +41,7 @@ def flashcards_page():
     return render_template("flashcardsPage.html")
 
 @app.route("/upload", methods=["POST"])
-def upload_pdf():
+def upload_file():
     ip = request.remote_addr
     now = time()
 
@@ -67,7 +67,9 @@ def upload_pdf():
 
     last_request[ip] = now
 
-    flashcards = generate_flashcards(text)
+    card_count = request.form.get("cardCount", 15)
+
+    flashcards = generate_flashcards(text, card_count)
 
     return jsonify(flashcards)
 

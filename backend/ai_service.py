@@ -10,7 +10,7 @@ load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-def generate_flashcards(text):
+def generate_flashcards(text, card_count=15):
     # detect language
     try:
         lang = detect(text)
@@ -20,7 +20,7 @@ def generate_flashcards(text):
     prompt = f"""
     You are a strict flashcard generator.
 
-    Create at least 15 flashcards from the text below.
+    Create exactly {card_count} flashcards from the text below.
 
     Keep questions simple and clear.
     Keep answers short and precise.
