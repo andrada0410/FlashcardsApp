@@ -134,3 +134,28 @@ body {
   color: var(--muted);
   font-weight: 500;
 }
+
+.top-progress-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  z-index: 1000;
+}
+
+progress.progress-bar {
+  width: 100%;
+  height: 100%;
+  display: block;
+  appearance: none;
+}
+
+progress.progress-bar::-webkit-progress-bar {
+  background-color: var(--border);
+}
+
+progress.progress-bar::-webkit-progress-value {
+  background: linear-gradient(90deg, #82c0e7 0%, #0f1ccc 100%);
+  transition: width 0.3s ease;
+}

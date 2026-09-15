@@ -6,11 +6,23 @@ window.onload = function () {
   renderCard();
 };
 
+function updateProgressBar(){
+  const progressBar = document.getElementById("progressBar");
+
+  if (!progressBar || cards.length === 0)
+    return;
+
+  const percentage = Math.round(((index + 1) / cards.length) * 100);
+
+  progressBar.value = percentage;
+}
+
 function renderCard() {
   const container = document.getElementById("app");
 
   if (cards.length === 0) {
     container.innerHTML = "<h2>No flashcards found</h2>";
+    updateProgressBar();
     return;
   }
 
@@ -42,6 +54,8 @@ function renderCard() {
   `;
   document.getElementById("card-question").textContent = card.question;
   document.getElementById("card-answer").textContent = card.answer;
+
+  updateProgressBar();
 }
 
 function nextCard() {
