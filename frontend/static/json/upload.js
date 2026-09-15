@@ -13,6 +13,8 @@ async function upload_file() {
     return;
   }
 
+  const selectedFile = fileInput.files[0];
+  
   isUploading = true;
   button.disabled = true;
   fileInput.disabled = true;
@@ -37,6 +39,7 @@ async function upload_file() {
     }
 
     localStorage.setItem("flashcards", JSON.stringify(data));
+    localStorage.setItem("fileName", selectedFile.name);
     window.location.href = "flashcardsPage.html";
 
   } catch (err) {
